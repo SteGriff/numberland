@@ -94,8 +94,8 @@
         const otherRect = other.getBoundingClientRect();
         const isInHorizontalAlignment = (movingRect.left >= otherRect.left && movingRect.left < otherRect.right)
           || (movingRect.right <= otherRect.right && movingRect.right > otherRect.left)
-        const isInVerticalAlignment = movingRect.bottom > otherRect.top
-          && movingRect.bottom < otherRect.top + 40;
+        const isInVerticalAlignment = movingRect.bottom > otherRect.top -10
+          && movingRect.bottom < otherRect.top + 20;
         return isInHorizontalAlignment && isInVerticalAlignment
           ? other
           : null;
