@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blocks</title>
     <style>
-      .block { width: 3rem; height: 3rem; display: inline-block;}
+      .block { width: 4rem; height: 4rem; display: inline-block;}
       .n_1, .n_1 .block, .n_7 .block:nth-child(7) { background-color: #b00; border-color: #a00; }
       .n_2, .n_2 .block, .n_7 .block:nth-child(6) { background-color: #fd0; border-color: #ca0; }
       .n_3, .n_3 .block, .n_7 .block:nth-child(5) { background-color: #ff0; border-color: #dd0; }
@@ -14,12 +14,14 @@
       .n_6, .n_6 .block, .n_7 .block:nth-child(2) { background-color: #909; border-color: #808; }
       .n_7, .n_7 .block:nth-child(1) { background-color: #f0f; border-color: #e0e; }
       .n_8, .n_8 .block { background-color: #d0d; border-color: #b0b; }
+      .n_9, .n_9 .block { background-color: #aaa; border-color: #999; }
+      .n_10, .n_10 .block { background-color: #fff; border-color: #a00; }
       .entity { border-width: 2px; border-style: solid; }
-      .mirror { border: 5px ridge gold; height: 9rem; width: 5rem; background-color: rgba(0,128,255,0.1)}
+      .mirror { border: 5px ridge gold; height: 14rem; width: 7rem; background-color: rgba(0,128,255,0.1)}
       .abs { position: absolute; }
       .bottom { bottom: 5rem; }
       .center { left: 45%; }
-      .shine { border-color: #ddd; box-shadow: 0 0 50px 15px #eee; }
+      .shine { border-color: #fff; box-shadow: 0 0 60px 30px rgba(255,255,128,0.7); }
       .flex { display: flex; }
       .flex-col { flex-direction: column; }
     </style>
@@ -92,7 +94,7 @@
         const isInHorizontalAlignment = (movingRect.left >= otherRect.left && movingRect.left < otherRect.right)
           || (movingRect.right <= otherRect.right && movingRect.right > otherRect.left)
         const isInVerticalAlignment = movingRect.bottom > otherRect.top
-          && movingRect.bottom < otherRect.top + 20;
+          && movingRect.bottom < otherRect.top + 40;
         return isInHorizontalAlignment && isInVerticalAlignment
           ? other
           : null;
@@ -179,7 +181,7 @@
 
         if (isInside(mirror, dragging)) {
           mirror.style.backgroundColor = "rgba(255,255,128,0.5)";
-          mirror.style.boxShadow= "0 0 50px 15px rgba(255,255,128,0.5)";
+          mirror.style.boxShadow= "0 0 60px 30px rgba(255,255,128,0.7)";
         } else {
           mirror.style.backgroundColor = "";
           mirror.style.boxShadow= "";
