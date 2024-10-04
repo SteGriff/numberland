@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blocks</title>
     <style>
       .block { width: 3rem; height: 3rem; display: inline-block;}
@@ -9,9 +10,10 @@
       .n_2, .n_2 .block, .n_7 .block:nth-child(6) { background-color: #fd0; border-color: #ca0; }
       .n_3, .n_3 .block, .n_7 .block:nth-child(5) { background-color: #ff0; border-color: #dd0; }
       .n_4, .n_4 .block, .n_7 .block:nth-child(4) { background-color: #0e0; border-color: #0c0; }
-      .n_5, .n_5 .block, .n_7 .block:nth-child(3) { background-color: #0ee; border-color: #0dd; }
-      .n_6, .n_6 .block, .n_7 .block:nth-child(2) { background-color: #b0b; border-color: #a0a; }
+      .n_5, .n_5 .block, .n_7 .block:nth-child(3) { background-color: #0de; border-color: #0cd; }
+      .n_6, .n_6 .block, .n_7 .block:nth-child(2) { background-color: #909; border-color: #808; }
       .n_7, .n_7 .block:nth-child(1) { background-color: #f0f; border-color: #e0e; }
+      .n_8, .n_8 .block { background-color: #d0d; border-color: #b0b; }
       .entity { border-width: 2px; border-style: solid; }
       .mirror { border: 5px ridge gold; height: 9rem; width: 5rem; background-color: rgba(0,128,255,0.1)}
       .abs { position: absolute; }
@@ -20,7 +22,6 @@
       .shine { border-color: #ddd; box-shadow: 0 0 50px 15px #eee; }
       .flex { display: flex; }
       .flex-col { flex-direction: column; }
-      .draggable { cursor: pointer; }
     </style>
   </head>
   <body>
@@ -43,42 +44,47 @@
           yOffset: 0
         }
       }
-      
+
       const makeBlockDataIfNone = (id) => {
         if (!blockData[id]) blockData.push(newBlockData(id));
       }
-      
+
       const initBlock = (b) => {
         console.log("b.id", b.id);
         makeBlockDataIfNone(b.id);
         const thisBlockData = blockData[b.id];
         console.log("thisBlockData", thisBlockData);
-        
+
         // Listen for the mouse down event
-        b.addEventListener("mousedown", function (e) {
-          // Record the starting position of the mouse and adjust by any existing offset
-          dragging = b;
-          thisBlockData.initialX = e.clientX - thisBlockData.xOffset;
-          thisBlockData.initialY = e.clientY - thisBlockData.yOffset;
-        });
+        b.addEventListener("mousedown", function(e) { mouseDown(e, b, thisBlockData) });
+        b.addEventListener("touchstart", function(e) { mouseDown(e, b, thisBlockData) });
         b.ondragstart = () => false;
       }
-      
+
+      const mouseDown = (e, b, data) => {
+        // Record the starting position of the mouse and adjust by any existing offset
+        dragging = b;
+        const cursorX = e.clientX || e.touches[0].clientX;
+        const cursorY = e.clientY || e.touches[0].clientY;
+        data.initialX = cursorX - data.xOffset;
+        data.initialY = cursorY - data.yOffset;
+      };
+
       const transform = (element, posData) => {
-        element.style.transform = 
+        element.style.transform =
           "translate3d(" + posData.currentX + "px, " + posData.currentY + "px, 0)";
       }
-      
+
       const isInside = (container, element) => {
         if (container === element) return false;
         const containerRect = container.getBoundingClientRect();
         const elementRect = element.getBoundingClientRect();
-        return elementRect.left >= containerRect.left 
-          && elementRect.right <= containerRect.right 
-          && elementRect.top >= containerRect.top; 
-          //&& elementRect.bottom <= containerRect.bottom;
+        return elementRect.left >= containerRect.left
+          && elementRect.right <= containerRect.right
+          && elementRect.top >= containerRect.top
+          && elementRect.top <= containerRect.bottom;
       }
-      
+
       const stackedUponBlock = (moving, other) => {
         if (moving === other) return false;
         const movingRect = moving.getBoundingClientRect();
@@ -91,16 +97,16 @@
           ? other
           : null;
       }
-      
+
       const clone = (mirror) => {
         maxId++;
         const newBlockEl = dragging.cloneNode(true);
-        console.log("clone", "maxId", maxId, "newBlockEl", newBlockEl, "oldBlockEl");
+        console.log("clone", "maxId", maxId);
         newBlockEl.id = maxId;
         initBlock(newBlockEl);
         const oldBlockData = blockData[dragging.id];
         const newBlockData = blockData[maxId];
-        
+
         newBlockData.currentX = oldBlockData.currentX + 100;
         newBlockData.currentY = oldBlockData.currentY;
         newBlockData.initialX = newBlockData.currentX;
@@ -108,13 +114,13 @@
         newBlockData.xOffset = newBlockData.currentX;
         newBlockData.yOffset = newBlockData.currentY;
         transform(newBlockEl, newBlockData);
-        
+
         console.log("clone end", "newBlockEl", newBlockEl, "oldBlockEl", dragging, "data", newBlockData);
         main.appendChild(newBlockEl);
       }
-      
+
       const getNumValue = (el) => +[...el.classList].find(c => c.startsWith("n_")).split("_")[1];
-      
+
       const combine = (dragging, stacking) => {
         maxId++;
         makeBlockDataIfNone(maxId);
@@ -122,16 +128,15 @@
         const operand2 = getNumValue(stacking);
         const total = operand1 + operand2;
         const newClass = "n_" + total;
-        console.log("combine", dragging, stacking, newClass);
         while (stacking.childNodes.length) {
           dragging.appendChild(stacking.firstChild);
         }
         dragging.classList.replace("n_" + operand1, newClass);
-        console.log("combine end", dragging, stacking);
+        console.log("combine end", dragging, stacking, newClass);
         main.removeChild(stacking);
         stacking = null;
       }
-      
+
       // Variables to track dragging and position data
       let dragging = null;
       let stacking = null;
@@ -145,29 +150,40 @@
         if (b.id > maxId) maxId = b.id;
         initBlock(b);
       }
+
+      // Listen for mouse move/up across the entire document
+      document.addEventListener("mousemove", function (e) { e.preventDefault(); mouseMove(e) });
+      document.addEventListener("touchmove", 
+        function (e) { e.preventDefault(); mouseMove(e) },
+        {passive: false}
+      );
+      document.addEventListener("mouseup", function (e) { mouseUp() });
+      document.addEventListener("touchend", function (e) { mouseUp() });
+      document.addEventListener("touchcancel", function (e) { mouseUp() });
       
-      // Listen for mouse movement across the entire document
-      document.addEventListener("mousemove", function (e) {
-        e.preventDefault
+      const mouseMove = (e) => {
         if (!dragging) return;
         const bData = blockData[dragging.id];
+        const cursorX = e.clientX || e.touches[0].clientX;
+        const cursorY = e.clientY || e.touches[0].clientY;
         
         // Calculate the new position of the mouse
-        bData.currentX = e.clientX - bData.initialX;
-        bData.currentY = e.clientY - bData.initialY;
+        bData.currentX = cursorX - bData.initialX;
+        bData.currentY = cursorY - bData.initialY;
         // Update the offset with the new position
         bData.xOffset = bData.currentX;
         bData.yOffset = bData.currentY;
+        
         // Move the block to the new position
         transform(dragging, bData);
-        
+
         if (isInside(mirror, dragging)) {
           mirror.style.backgroundColor = "rgba(255,255,128,0.5)";
           mirror.style.boxShadow= "0 0 50px 15px rgba(255,255,128,0.5)";
         } else {
           mirror.style.backgroundColor = "";
           mirror.style.boxShadow= "";
-          
+
           for(const b of blocks){
             if (b === dragging) continue;
             stacking = stackedUponBlock(dragging, b);
@@ -178,7 +194,7 @@
               break;
             }
           }
-          
+
           if (!stacking)
           {
             dragging.classList.remove("shine");
@@ -186,10 +202,9 @@
               b.classList.remove("shine");
           }
         }
-      });
-
-      // Listen for the mouse up event across the entire document
-      document.addEventListener("mouseup", function () {
+      }
+      
+      const mouseUp = () => {
         if (!dragging) return;
         // Save the final position
         dragging.initialX = dragging.currentX;
@@ -202,7 +217,7 @@
           combine(dragging, stacking);
         // Stop drag
         dragging = null;
-      });
+      }
     </script>
   </body>
 </html>
