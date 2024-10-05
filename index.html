@@ -100,8 +100,16 @@
         background-color: rgba(255,255,128,0.5);
         box-shadow: 0 0 4rem 2rem rgba(255,255,128,0.7);
       }
-      .flex { display: flex; }
-      .flex-col { flex-direction: column; }
+      .container { 
+        /*display: flex; flex-direction: column;*/
+        display: grid;
+      }
+      .w2 {
+        grid-template-columns: 4rem 4rem;
+      }
+      .w3 {
+        grid-template-columns: 4rem 4rem 4rem;
+      }
       .draggable { cursor: pointer; }
     </style>
   </head>
@@ -143,6 +151,13 @@
       }
 
       const mouseDown = (e, b, data) => {
+        if (e.buttons === 2)
+          changeShape(b, data); // Right-click
+        else
+          startDrag(e, b, data); // Other clicks
+      };
+      
+      const startDrag = (e, b, data) => {
         // Record the starting position of the mouse and adjust by any existing offset
         dragging = b;
         const cursorX = e.clientX || e.touches[0].clientX;
@@ -150,6 +165,11 @@
         data.initialX = cursorX - data.xOffset;
         data.initialY = cursorY - data.yOffset;
       };
+      
+      const changeShape = (b, data) => {
+        console.log("changeShape", b, data);
+        b.classList.toggle("w2");
+      }
 
       const transform = (element, posData) => {
         element.style.transform =
@@ -168,6 +188,7 @@
 
       const stackedUponBlock = (moving, other) => {
         if (moving === other) return false;
+        if (other === mirror) return false;
         const movingRect = moving.getBoundingClientRect();
         const otherRect = other.getBoundingClientRect();
         const isInHorizontalAlignment = (movingRect.left >= otherRect.left && movingRect.left < otherRect.right)
