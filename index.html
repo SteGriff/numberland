@@ -81,7 +81,7 @@
       .entity { border-width: 2px; border-style: solid; }
       .mirror { 
         border: 5px ridge gold; height: 14rem; width: 7rem;
-        background-color: rgba(0,128,255,0.1);
+        background: linear-gradient(25deg, rgba(0,128,255,0.2) 0%, rgba(255,255,255,0.3) 45%, rgba(255,255,255,0.3) 55%, rgba(0,128,255,0.2) 100%);
       }
       .abs { position: absolute; }
       .bottom { bottom: 5rem; }
@@ -112,7 +112,7 @@
   <body oncontextmenu="return false;">
     <div id="main">
       <div class="draggable mirror abs bottom center" id="0"></div>
-      <div class="draggable container abs n_1" id="1">
+      <div class="draggable container abs n_1 w_1" id="1">
         <div class="block entity"></div>
       </div>
     </div>
@@ -164,8 +164,16 @@
       };
       
       const changeShape = (b, data) => {
-        console.log("changeShape", b, data);
-        b.classList.toggle("w_2");
+        const width = getWidthValue(b);
+        const num = getNumValue(b);
+        const nextWidth = (num > width)
+          ? width + 1
+          : 1;
+        const currentWidthClass = "w_" + width;
+        const newWidthClass = "w_" + nextWidth;
+        b.classList.remove(currentWidthClass);
+        b.classList.add(newWidthClass);
+        console.log("changeShape from", currentWidthClass, "to", newWidthClass);
       }
 
       const transform = (element, posData) => {
@@ -219,6 +227,8 @@
       }
 
       const getNumValue = (el) => +[...el.classList].find(c => c.startsWith("n_")).split("_")[1];
+      
+      const getWidthValue = (el) => +[...el.classList].find(c => c.startsWith("w_")).split("_")[1];
 
       const combine = (dragging, stacking) => {
         maxId++;
