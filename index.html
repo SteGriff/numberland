@@ -49,17 +49,14 @@
       .n_17 .block:nth-child(-n + 7){
         background-color: #f0f; border-color: #e0e; 
       }
-      .n_8, 
       .n_8 .block,
       .n_18 .block:nth-child(-n + 8){ 
         background-color: #d0d; border-color: #b0b;
       }
-      .n_9, 
       .n_9 .block,
       .n_19 .block:nth-child(-n + 9){ 
         background-color: #aaa; border-color: #999;
       }
-      .n_10, 
       .n_10 .block,
       .n_11 .block,
       .n_12 .block,
@@ -104,6 +101,9 @@
         grid-template-columns: 4.2rem 4.2rem 4.2rem;
       }
       .w_4 {
+        grid-template-columns: 4.2rem 4.2rem 4.2rem 4.2rem;
+      }
+      .w_5 {
         grid-template-columns: 4.2rem 4.2rem 4.2rem 4.2rem;
       }
       .draggable { cursor: pointer; }
@@ -166,7 +166,7 @@
       const changeShape = (b, data) => {
         const width = getWidthValue(b);
         const num = getNumValue(b);
-        const nextWidth = (num > width)
+        const nextWidth = (num > width && width < 5)
           ? width + 1
           : 1;
         const currentWidthClass = "w_" + width;
