@@ -81,7 +81,9 @@
         background: linear-gradient(25deg, rgba(0,128,255,0.2) 0%, rgba(255,255,255,0.3) 45%, rgba(255,255,255,0.3) 55%, rgba(0,128,255,0.2) 100%);
       }
       .abs { position: absolute; }
-      .bottom { bottom: 5rem; }
+      .bottom { bottom: 2rem; }
+      .top { top: 2rem; }
+      .right { right: 2rem; }
       .center { left: 45%; }
       .shine { 
         border-color: #fff; 
@@ -90,9 +92,14 @@
         background-color: rgba(255,255,128,0.5);
         box-shadow: 0 0 4rem 2rem rgba(255,255,128,0.7);
       }
-      .container { 
-        /*display: flex; flex-direction: column;*/
+      .container {
         display: grid;
+      }
+      .sun {
+        border-radius: 100%;
+        background-color: #ff0;
+        box-shadow: 0 0 2rem 1rem rgba(255,255,128,0.7);
+        cursor: pointer;
       }
       .w_2 {
         grid-template-columns: 4.2rem 4.2rem;
@@ -107,12 +114,17 @@
         grid-template-columns: 4.2rem 4.2rem 4.2rem 4.2rem;
       }
       .draggable { cursor: pointer; }
+      .hidden { visibility : hidden; }
     </style>
   </head>
   <body oncontextmenu="return false;">
     <div id="main">
+      <div class="sun abs block top right" onclick="makeOne()"></div>
       <div class="draggable mirror abs bottom center" id="0"></div>
-      <div class="draggable container abs n_1 w_1" id="1">
+      <div class="draggable container abs n_1 w_1 hidden" id="1">
+        <div class="block entity"></div>
+      </div>
+      <div class="draggable container abs n_1 w_1" id="2">
         <div class="block entity"></div>
       </div>
     </div>
@@ -133,10 +145,17 @@
       const makeBlockDataIfNone = (id) => {
         if (!blockData[id]) blockData.push(newBlockData(id));
       }
-
+      
+      const makeOne = () => {
+        dragging = hidden;
+        clone(mirror);
+        dragging = null;
+      }
+      
       const initBlock = (b) => {
         console.log("b.id", b.id);
         makeBlockDataIfNone(b.id);
+        b.classList.remove("hidden"); // If we cloned from the hidden block
         const thisBlockData = blockData[b.id];
         console.log("thisBlockData", thisBlockData);
 
@@ -252,6 +271,7 @@
       let maxId = 0;
       const blockData = [];
       const main = document.getElementById("main");
+      const hidden = document.getElementById("1");
       const mirror = document.getElementsByClassName("mirror")[0];
       const blocks = document.getElementsByClassName("draggable");
       for (const b of blocks)
