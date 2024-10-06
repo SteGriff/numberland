@@ -155,7 +155,6 @@
       const initBlock = (b) => {
         console.log("b.id", b.id);
         makeBlockDataIfNone(b.id);
-        b.classList.remove("hidden"); // If we cloned from the hidden block
         const thisBlockData = blockData[b.id];
         console.log("thisBlockData", thisBlockData);
 
@@ -230,6 +229,8 @@
         console.log("clone", "maxId", maxId);
         newBlockEl.id = maxId;
         initBlock(newBlockEl);
+        // In case we cloned from the hidden block
+        newBlockEl.classList.remove("hidden"); 
         const oldBlockData = blockData[dragging.id];
         const newBlockData = blockData[maxId];
 
