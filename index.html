@@ -95,6 +95,12 @@
       .container {
         display: grid;
       }
+      /* 
+      Almost works but not quite
+      .container>div:first-child {
+        grid-column-end: -1;
+      }
+      */
       .sun {
         border-radius: 100%;
         background-color: #ff0;
@@ -255,6 +261,8 @@
         makeBlockDataIfNone(maxId);
         const operand1 = getNumValue(dragging);
         const operand2 = getNumValue(stacking);
+        const width1 = getWidthValue(dragging);
+        const width2 = getWidthVal
         const total = operand1 + operand2;
         const newClass = "n_" + total;
         while (stacking.childNodes.length) {
