@@ -9,44 +9,46 @@
       .block { width: 4rem; height: 4rem; display: inline-block;}
       .n_1 .block, 
       .n_7 .block:nth-child(7),
+      .n_17 .block:nth-child(7),
       .n_11 .block:nth-child(-n + 1){ 
         background-color: #b00; border-color: #a00;
       }
       .n_2 .block,
-      .n_20,
       .n_20 .block,
       .n_7 .block:nth-child(6),
+      .n_17 .block:nth-child(6),
       .n_12 .block:nth-child(-n + 2){
         background-color: #fd0; border-color: #ca0;
       }
       .n_3 .block,
-      .n_30,
       .n_30 .block,
       .n_7 .block:nth-child(5),
+      .n_17 .block:nth-child(5),
       .n_13 .block:nth-child(-n + 3){
         background-color: #ff0; border-color: #dd0;
       }
       .n_4 .block,
-      .n_40,
       .n_40 .block,
       .n_7 .block:nth-child(4),
+      .n_17 .block:nth-child(4),
       .n_14 .block:nth-child(-n + 4){
         background-color: #0e0; border-color: #0c0;
       }
-      .n_5 .block, 
-      .n_50,
+      .n_5 .block,
       .n_50 .block,
       .n_7 .block:nth-child(3),
+      .n_17 .block:nth-child(3),
       .n_15 .block:nth-child(-n + 5){ 
         background-color: #0de; border-color: #0cd; 
       }
       .n_6 .block, 
       .n_7 .block:nth-child(2),
+      .n_17 .block:nth-child(2),
       .n_16 .block:nth-child(-n + 6){ 
         background-color: #909; border-color: #808; 
       }
       .n_7 .block:nth-child(1),
-      .n_17 .block:nth-child(-n + 7){
+      .n_17 .block:nth-child(1){
         background-color: #f0f; border-color: #e0e; 
       }
       .n_8 .block,
@@ -117,7 +119,7 @@
         grid-template-columns: 4.2rem 4.2rem 4.2rem 4.2rem;
       }
       .w_5 {
-        grid-template-columns: 4.2rem 4.2rem 4.2rem 4.2rem;
+        grid-template-columns: 4.2rem 4.2rem 4.2rem 4.2rem 4.2rem;
       }
       .draggable { cursor: pointer; }
       .hidden { visibility : hidden; }
@@ -262,13 +264,16 @@
         const operand1 = getNumValue(dragging);
         const operand2 = getNumValue(stacking);
         const width1 = getWidthValue(dragging);
-        const width2 = getWidthVal
+        const width2 = getWidthValue(stacking);
         const total = operand1 + operand2;
+        const width = Math.max(width1, width2);
         const newClass = "n_" + total;
+        const newWidth = "w_" + width;
         while (stacking.childNodes.length) {
           dragging.appendChild(stacking.firstChild);
         }
         dragging.classList.replace("n_" + operand1, newClass);
+        dragging.classList.replace("w_" + width1, newWidth);
         console.log("combine end", dragging, stacking, newClass);
         main.removeChild(stacking);
         stacking = null;
