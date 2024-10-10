@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blocks</title>
     <style>
-      html { background-image: url(https://cdn.glitch.global/bdbab925-c273-47f6-b548-8cef94c1e8a2/numberland-bg.webp?v=1728129309585); }
+      html { 
+        background-image: url(https://cdn.glitch.global/bdbab925-c273-47f6-b548-8cef94c1e8a2/numberland-bg.webp?v=1728129309585); 
+        font-family: sans-serif;
+      }
       .block { width: 4rem; height: 4rem; display: inline-block;}
       .n_1 .block, 
       .n_7 .block:nth-child(7),
@@ -109,6 +112,15 @@
         box-shadow: 0 0 2rem 1rem rgba(255,255,128,0.7);
         cursor: pointer;
       }
+      .help {
+        visibility: hidden;
+        border-radius: 100%;
+        background-color: #fff;
+        cursor: pointer;
+        text-align: center;
+        font-size: 3rem;
+        line-height: 4rem;
+      }
       .w_2 {
         grid-template-columns: 4.2rem 4.2rem;
       }
@@ -128,6 +140,7 @@
   <body oncontextmenu="return false;">
     <div id="main">
       <div class="sun abs block top right" onclick="makeOne()"></div>
+        <div class="help abs block bottom right" onclick="help()">?</div>
       <div class="draggable mirror abs bottom center" id="0"></div>
       <div class="draggable container abs n_1 w_1 hidden" id="1">
         <div class="block entity"></div>
