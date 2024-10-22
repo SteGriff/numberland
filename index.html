@@ -140,7 +140,7 @@
   <body oncontextmenu="return false;">
     <div id="main">
       <div class="sun abs block top right" onclick="makeOne()"></div>
-        <div class="help abs block bottom right" onclick="help()">?</div>
+      <div class="help abs block bottom right" onclick="help()">?</div>
       <div class="draggable mirror abs bottom center" id="0"></div>
       <div class="draggable container abs n_1 w_1 hidden" id="1">
         <div class="block entity"></div>
@@ -151,6 +151,35 @@
     </div>
 
     <script>
+      // Variables to track dragging and position data
+      let dragging = null;
+      let stacking = null;
+      let maxId = 0;
+      const blockData = [];
+      const main = document.getElementById("main");
+      const hidden = document.getElementById("1");
+      const mirror = document.getElementsByClassName("mirror")[0];
+      const blocks = document.getElementsByClassName("draggable");
+      for (const b of blocks)
+      {
+        if (b.id > maxId) maxId = b.id;
+        initBlock(b);
+      }
+
+      // Listen for mouse move/up across the entire document
+      document.addEventListener("mousemove", function (e) { e.preventDefault(); mouseMove(e) });
+      document.addEventListener("touchmove", 
+        function (e) { e.preventDefault(); mouseMove(e) },
+        {passive: false}
+      );
+      document.addEventListener("mouseup", function (e) { mouseUp() });
+      document.addEventListener("touchend", function (e) { mouseUp() });
+      document.addEventListener("touchcancel", function (e) { mouseUp() });
+      
+      const help = () => {
+        
+      }
+      
       const newBlockData = (id) => {
         return {
           id: id,
@@ -292,31 +321,6 @@
         stacking = null;
       }
 
-      // Variables to track dragging and position data
-      let dragging = null;
-      let stacking = null;
-      let maxId = 0;
-      const blockData = [];
-      const main = document.getElementById("main");
-      const hidden = document.getElementById("1");
-      const mirror = document.getElementsByClassName("mirror")[0];
-      const blocks = document.getElementsByClassName("draggable");
-      for (const b of blocks)
-      {
-        if (b.id > maxId) maxId = b.id;
-        initBlock(b);
-      }
-
-      // Listen for mouse move/up across the entire document
-      document.addEventListener("mousemove", function (e) { e.preventDefault(); mouseMove(e) });
-      document.addEventListener("touchmove", 
-        function (e) { e.preventDefault(); mouseMove(e) },
-        {passive: false}
-      );
-      document.addEventListener("mouseup", function (e) { mouseUp() });
-      document.addEventListener("touchend", function (e) { mouseUp() });
-      document.addEventListener("touchcancel", function (e) { mouseUp() });
-      
       const mouseMove = (e) => {
         if (!dragging) return;
         const bData = blockData[dragging.id];
