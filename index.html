@@ -13,14 +13,27 @@
       .n_1 .block, 
       .n_7 .block:nth-child(7),
       .n_17 .block:nth-child(7),
-      .n_11 .block:nth-child(-n + 1){ 
+      .n_11 .block:nth-child(-n + 1),
+      .n_21 .block:nth-child(-n + 1),
+      .n_31 .block:nth-child(-n + 1){ 
         background-color: #b00; border-color: #a00;
       }
       .n_2 .block,
       .n_20 .block,
+      .n_21 .block,
+      .n_22 .block,
+      .n_23 .block,
+      .n_24 .block,
+      .n_25 .block,
+      .n_26 .block,
+      .n_27 .block,
+      .n_28 .block,
+      .n_29 .block,
       .n_7 .block:nth-child(6),
       .n_17 .block:nth-child(6),
-      .n_12 .block:nth-child(-n + 2){
+      .n_12 .block:nth-child(-n + 2),
+      .n_22 .block:nth-child(-n + 2),
+      .n_32 .block:nth-child(-n + 2),{
         background-color: #fd0; border-color: #ca0;
       }
       .n_3 .block,
@@ -134,7 +147,7 @@
       .w_5 {
         grid-template-columns: 4.2rem 4.2rem 4.2rem 4.2rem 4.2rem;
       }
-      .draggable { cursor: pointer; }
+      .draggable { cursor: grab; }
       .hidden { visibility : hidden; }
     </style>
   </head>
@@ -166,31 +179,6 @@
     </div>
 
     <script>
-      // Variables to track dragging and position data
-      let dragging = null;
-      let stacking = null;
-      let maxId = 0;
-      const blockData = [];
-      const main = document.getElementById("main");
-      const hidden = document.getElementById("1");
-      const mirror = document.getElementsByClassName("mirror")[0];
-      const blocks = document.getElementsByClassName("draggable");
-      for (const b of blocks)
-      {
-        if (b.id > maxId) maxId = b.id;
-        initBlock(b);
-      }
-
-      // Listen for mouse move/up across the entire document
-      document.addEventListener("mousemove", function (e) { e.preventDefault(); mouseMove(e) });
-      document.addEventListener("touchmove", 
-        function (e) { e.preventDefault(); mouseMove(e) },
-        {passive: false}
-      );
-      document.addEventListener("mouseup", function (e) { mouseUp() });
-      document.addEventListener("touchend", function (e) { mouseUp() });
-      document.addEventListener("touchcancel", function (e) { mouseUp() });
-      
       const help = () => {
         
       }
@@ -392,6 +380,33 @@
         dragging = null;
         stacking = null;
       }
+      
+      // Set up the app
+      // Variables to track dragging and position data
+      let dragging = null;
+      let stacking = null;
+      let maxId = 0;
+      const blockData = [];
+      const main = document.getElementById("main");
+      const hidden = document.getElementById("1");
+      const mirror = document.getElementsByClassName("mirror")[0];
+      const blocks = document.getElementsByClassName("draggable");
+      for (const b of blocks)
+      {
+        if (b.id > maxId) maxId = b.id;
+        initBlock(b);
+      }
+
+      // Listen for mouse move/up across the entire document
+      document.addEventListener("mousemove", function (e) { e.preventDefault(); mouseMove(e) });
+      document.addEventListener("touchmove", 
+        function (e) { e.preventDefault(); mouseMove(e) },
+        {passive: false}
+      );
+      document.addEventListener("mouseup", function (e) { mouseUp() });
+      document.addEventListener("touchend", function (e) { mouseUp() });
+      document.addEventListener("touchcancel", function (e) { mouseUp() });
+      
     </script>
   </body>
 </html>
