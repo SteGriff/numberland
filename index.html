@@ -2,16 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Numberland</title>
     <style>
-      html { 
-        background-image: url(https://cdn.glitch.global/bdbab925-c273-47f6-b548-8cef94c1e8a2/numberland-bg.webp?v=1728129309585); 
+      html {
+        background-image: url(https://cdn.glitch.global/bdbab925-c273-47f6-b548-8cef94c1e8a2/numberland-bg.webp?v=1728129309585);
         font-family: sans-serif;
       }
-      .block { width: 4rem; height: 4rem; display: inline-block;}
-      .block { background-color: #eee; border-color: #ddd; }
-      .n_1 .block, 
+      .block {
+        width: 4rem;
+        height: 4rem;
+        display: inline-block;
+      }
+      .block {
+        background-color: #eee;
+        border-color: #ddd;
+      }
+      .n_1 .block,
       .n_7 .block:nth-child(7),
       .n_17 .block:nth-child(7),
       .n_11 .block:nth-child(-n + 1),
@@ -22,8 +29,9 @@
       .n_61 .block:nth-child(-n + 1),
       .n_71 .block:nth-child(-n + 1),
       .n_81 .block:nth-child(-n + 1),
-      .n_91 .block:nth-child(-n + 1){ 
-        background-color: #b00; border-color: #a00;
+      .n_91 .block:nth-child(-n + 1) {
+        background-color: #b00;
+        border-color: #a00;
       }
       .n_2 .block,
       .n_20 .block,
@@ -45,8 +53,9 @@
       .n_62 .block:nth-child(-n + 2),
       .n_72 .block:nth-child(-n + 2),
       .n_82 .block:nth-child(-n + 2),
-      .n_92 .block:nth-child(-n + 2){
-        background-color: #fd0; border-color: #ca0;
+      .n_92 .block:nth-child(-n + 2) {
+        background-color: #fd0;
+        border-color: #ca0;
       }
       .n_3 .block,
       .n_30 .block,
@@ -68,8 +77,9 @@
       .n_63 .block:nth-child(-n + 3),
       .n_73 .block:nth-child(-n + 3),
       .n_83 .block:nth-child(-n + 3),
-      .n_93 .block:nth-child(-n + 3){
-        background-color: #ff0; border-color: #dd0;
+      .n_93 .block:nth-child(-n + 3) {
+        background-color: #ff0;
+        border-color: #dd0;
       }
       .n_4 .block,
       .n_40 .block,
@@ -92,8 +102,9 @@
       .n_64 .block:nth-child(-n + 4),
       .n_74 .block:nth-child(-n + 4),
       .n_84 .block:nth-child(-n + 4),
-      .n_94 .block:nth-child(-n + 4){
-        background-color: #0e0; border-color: #0c0;
+      .n_94 .block:nth-child(-n + 4) {
+        background-color: #0e0;
+        border-color: #0c0;
       }
       .n_5 .block,
       .n_50 .block,
@@ -115,10 +126,11 @@
       .n_65 .block:nth-child(-n + 5),
       .n_75 .block:nth-child(-n + 5),
       .n_85 .block:nth-child(-n + 5),
-      .n_95 .block:nth-child(-n + 5){ 
-        background-color: #0de; border-color: #0cd; 
+      .n_95 .block:nth-child(-n + 5) {
+        background-color: #0de;
+        border-color: #0cd;
       }
-      .n_6 .block, 
+      .n_6 .block,
       .n_60 .block,
       .n_61 .block,
       .n_62 .block,
@@ -138,8 +150,9 @@
       .n_56 .block:nth-child(-n + 6),
       .n_76 .block:nth-child(-n + 6),
       .n_86 .block:nth-child(-n + 6),
-      .n_96 .block:nth-child(-n + 6){ 
-        background-color: #909; border-color: #808; 
+      .n_96 .block:nth-child(-n + 6) {
+        background-color: #909;
+        border-color: #808;
       }
       .n_7 .block:nth-child(1),
       .n_70 .block,
@@ -158,9 +171,10 @@
       .n_47 .block:nth-child(-n + 6),
       .n_57 .block:nth-child(-n + 6),
       .n_67 .block:nth-child(-n + 6),
-      .n_87 .block:nth-child(-n + 6)
-,      .n_97 .block:nth-child(-n + 6){
-        background-color: #f0f; border-color: #e0e; 
+      .n_87 .block:nth-child(-n + 6),
+      .n_97 .block:nth-child(-n + 6) {
+        background-color: #f0f;
+        border-color: #e0e;
       }
       .n_8 .block,
       .n_80 .block,
@@ -180,12 +194,14 @@
       .n_58 .block:nth-child(-n + 8),
       .n_68 .block:nth-child(-n + 8),
       .n_78 .block:nth-child(-n + 8),
-      .n_98 .block:nth-child(-n + 8){ 
-        background-color: #d0d; border-color: #b0b;
+      .n_98 .block:nth-child(-n + 8) {
+        background-color: #d0d;
+        border-color: #b0b;
       }
       .n_9 .block,
-      .n_19 .block:nth-child(-n + 9){ 
-        background-color: #aaa; border-color: #999;
+      .n_19 .block:nth-child(-n + 9) {
+        background-color: #aaa;
+        border-color: #999;
       }
       .n_10 .block,
       .n_11 .block,
@@ -196,32 +212,66 @@
       .n_16 .block,
       .n_17 .block,
       .n_18 .block,
-      .n_19 .block
-      { 
-        background-color: #fff; border-color: #a00;
+      .n_19 .block {
+        background-color: #fff;
+        border-color: #a00;
       }
-      .n_10 .block:hover { 
+      .n_10 .block:hover {
         background-color: #b00;
-        box-shadow: 0 0 2rem 1rem rgba(255,10,10,0.5);
+        box-shadow: 0 0 2rem 1rem rgba(255, 10, 10, 0.5);
       }
-            
-      .entity { border-width: 2px; border-style: solid; }
-      .mirror { 
-        border: 5px ridge gold; height: 14rem; width: 7rem;
-        background: linear-gradient(25deg, rgba(0,128,255,0.2) 0%, rgba(255,255,255,0.3) 45%, rgba(255,255,255,0.3) 55%, rgba(0,128,255,0.2) 100%);
+
+      .entity {
+        border-width: 2px;
+        border-style: solid;
       }
-      .abs { position: absolute; }
-      .bottom { bottom: 2rem; }
-      .top { top: 2rem; }
-      .right { right: 2rem; }
-      .left { left: 2rem; }
-      .center { left: 45%; }
-      .shine { 
-        border-color: #fff; 
-        box-shadow: 0 0 4rem 2rem rgba(255,255,128,0.7); }
+      .mirror {
+        border: 5px ridge gold;
+        height: 14rem;
+        width: 7rem;
+        background: linear-gradient(
+          25deg,
+          rgba(0, 128, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0.3) 45%,
+          rgba(255, 255, 255, 0.3) 55%,
+          rgba(0, 128, 255, 0.2) 100%
+        );
+      }
+      .abs {
+        position: absolute;
+      }
+      .bottom {
+        bottom: 2rem;
+      }
+      .top {
+        top: 2rem;
+      }
+      .right {
+        right: 2rem;
+      }
+      .left {
+        left: 2rem;
+      }
+      .centerish {
+        left: 45%;
+      }
+      .center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .mw5 {
+        max-width: 16rem;
+      }
+      .mw6 {
+        max-width: 32rem;
+      }
+      .shine {
+        border-color: #fff;
+        box-shadow: 0 0 4rem 2rem rgba(255, 255, 128, 0.7);
+      }
       .mirror-shine {
-        background-color: rgba(255,255,128,0.5);
-        box-shadow: 0 0 4rem 2rem rgba(255,255,128,0.7);
+        background-color: rgba(255, 255, 128, 0.5);
+        box-shadow: 0 0 4rem 2rem rgba(255, 255, 128, 0.7);
       }
       .container {
         display: grid;
@@ -235,7 +285,7 @@
       .sun {
         border-radius: 100%;
         background-color: #ff0;
-        box-shadow: 0 0 2rem 1rem rgba(255,255,128,0.7);
+        box-shadow: 0 0 2rem 1rem rgba(255, 255, 128, 0.7);
         cursor: pointer;
       }
       .help {
@@ -260,15 +310,19 @@
       .w_5 {
         grid-template-columns: 4.2rem 4.2rem 4.2rem 4.2rem 4.2rem;
       }
-      .draggable { cursor: grab; }
-      .hidden { visibility : hidden; }
+      .draggable {
+        cursor: grab;
+      }
+      .hidden {
+        visibility: hidden;
+      }
     </style>
   </head>
   <body oncontextmenu="return false;">
     <div id="main">
       <div class="sun abs block top right" onclick="makeOne()"></div>
       <div class="help abs bottom right" onclick="help()">?</div>
-      <div class="draggable mirror abs bottom center" id="0"></div>
+      <div class="draggable mirror abs bottom centerish" id="0"></div>
       <div class="draggable container abs n_1 w_1 hidden" id="1">
         <div class="block entity"></div>
       </div>
@@ -277,25 +331,37 @@
       </div>
     </div>
     <div class="help-text hidden abs top right left">
-      <h1>Numberland</h1>
-      <p>Instructions:</p>
-      <ul>
-      <li>Drag blocks into the mirror to make a clone.</li>
-      <li>They need to be "standing tall" to fit in the mirror.</li>
-      <li>Drag one block on top of another to stack them (add).</li>
-      <li>It's not currently possible to "split" blocks again (subtract).</li>
-      <li>If you run out of "Ones" you can click the sun to get another one.</li>
-      <li>Right-click a block to change its width, up to a max of five (not available on touch screen).</li>
-      <li>When combined, blocks get the greater width of either block that was combined.</li>
-      <li>Have fun!</li>
-      </ul>
+      <div class="mw6 center">
+        <h1>Numberland</h1>
+        <p>Instructions:</p>
+        <ul>
+          <li>Drag blocks into the mirror to make a clone.</li>
+          <li>They need to be "standing tall" to fit in the mirror.</li>
+          <li>Drag one block on top of another to stack them (add).</li>
+          <li>
+            It's not currently possible to "split" blocks again (subtract).
+          </li>
+          <li>
+            If you run out of "Ones" you can click the sun to get another one.
+          </li>
+          <li>
+            Right-click a block to change its width, up to a max of five (not
+            available on touch screen).
+          </li>
+          <li>
+            When combined, blocks get the greater width of either block that was
+            combined.
+          </li>
+          <li>Have fun!</li>
+        </ul>
+      </div>
     </div>
 
     <script>
       const help = () => {
-        
-      }
-      
+        helpText.classList.toggle("hidden");
+      };
+
       const newBlockData = (id) => {
         return {
           id: id,
@@ -304,20 +370,20 @@
           currentX: 0,
           currentY: 0,
           xOffset: 0,
-          yOffset: 0
-        }
-      }
+          yOffset: 0,
+        };
+      };
 
       const makeBlockDataIfNone = (id) => {
         if (!blockData[id]) blockData.push(newBlockData(id));
-      }
-      
+      };
+
       const makeOne = () => {
         dragging = hidden;
         clone(mirror);
         dragging = null;
-      }
-      
+      };
+
       const initBlock = (b) => {
         console.log("b.id", b.id);
         makeBlockDataIfNone(b.id);
@@ -325,19 +391,22 @@
         console.log("thisBlockData", thisBlockData);
 
         // Listen for the mouse down event
-        b.addEventListener("mousedown", function(e) { mouseDown(e, b, thisBlockData) });
-        b.addEventListener("touchstart", function(e) { mouseDown(e, b, thisBlockData) });
+        b.addEventListener("mousedown", function (e) {
+          mouseDown(e, b, thisBlockData);
+        });
+        b.addEventListener("touchstart", function (e) {
+          mouseDown(e, b, thisBlockData);
+        });
         b.ondragstart = () => false;
-      }
+      };
 
       const mouseDown = (e, b, data) => {
         e.preventDefault();
-        if (e.buttons === 2)
-          changeShape(b, data); // Right-click
-        else
-          startDrag(e, b, data); // Other clicks
+        if (e.buttons === 2) changeShape(b, data);
+        // Right-click
+        else startDrag(e, b, data); // Other clicks
       };
-      
+
       const startDrag = (e, b, data) => {
         // Record the starting position of the mouse and adjust by any existing offset
         dragging = b;
@@ -346,48 +415,54 @@
         data.initialX = cursorX - data.xOffset;
         data.initialY = cursorY - data.yOffset;
       };
-      
+
       const changeShape = (b, data) => {
         const width = getWidthValue(b);
         const num = getNumValue(b);
-        const nextWidth = (num > width && width < 5)
-          ? width + 1
-          : 1;
+        const nextWidth = num > width && width < 5 ? width + 1 : 1;
         const currentWidthClass = "w_" + width;
         const newWidthClass = "w_" + nextWidth;
         b.classList.remove(currentWidthClass);
         b.classList.add(newWidthClass);
         console.log("changeShape from", currentWidthClass, "to", newWidthClass);
-      }
+      };
 
       const transform = (element, posData) => {
         element.style.transform =
-          "translate3d(" + posData.currentX + "px, " + posData.currentY + "px, 0)";
-      }
+          "translate3d(" +
+          posData.currentX +
+          "px, " +
+          posData.currentY +
+          "px, 0)";
+      };
 
       const isInside = (container, element) => {
         if (container === element) return false;
         const containerRect = container.getBoundingClientRect();
         const elementRect = element.getBoundingClientRect();
-        return elementRect.left >= containerRect.left
-          && elementRect.right <= containerRect.right
-          && elementRect.top >= containerRect.top
-          && elementRect.top <= containerRect.bottom;
-      }
+        return (
+          elementRect.left >= containerRect.left &&
+          elementRect.right <= containerRect.right &&
+          elementRect.top >= containerRect.top &&
+          elementRect.top <= containerRect.bottom
+        );
+      };
 
       const stackedUponBlock = (moving, other) => {
         if (moving === other) return false;
         if (other === mirror) return false;
         const movingRect = moving.getBoundingClientRect();
         const otherRect = other.getBoundingClientRect();
-        const isInHorizontalAlignment = (movingRect.left >= otherRect.left && movingRect.left < otherRect.right)
-          || (movingRect.right <= otherRect.right && movingRect.right > otherRect.left)
-        const isInVerticalAlignment = movingRect.bottom > otherRect.top -10
-          && movingRect.bottom < otherRect.top + 20;
-        return isInHorizontalAlignment && isInVerticalAlignment
-          ? other
-          : null;
-      }
+        const isInHorizontalAlignment =
+          (movingRect.left >= otherRect.left &&
+            movingRect.left < otherRect.right) ||
+          (movingRect.right <= otherRect.right &&
+            movingRect.right > otherRect.left);
+        const isInVerticalAlignment =
+          movingRect.bottom > otherRect.top - 10 &&
+          movingRect.bottom < otherRect.top + 20;
+        return isInHorizontalAlignment && isInVerticalAlignment ? other : null;
+      };
 
       const clone = (mirror) => {
         maxId++;
@@ -396,7 +471,7 @@
         newBlockEl.id = maxId;
         initBlock(newBlockEl);
         // In case we cloned from the hidden block
-        newBlockEl.classList.remove("hidden"); 
+        newBlockEl.classList.remove("hidden");
         const oldBlockData = blockData[dragging.id];
         const newBlockData = blockData[maxId];
 
@@ -408,13 +483,23 @@
         newBlockData.yOffset = newBlockData.currentY;
         transform(newBlockEl, newBlockData);
 
-        console.log("clone end", "newBlockEl", newBlockEl, "oldBlockEl", dragging, "data", newBlockData);
+        console.log(
+          "clone end",
+          "newBlockEl",
+          newBlockEl,
+          "oldBlockEl",
+          dragging,
+          "data",
+          newBlockData
+        );
         main.appendChild(newBlockEl);
-      }
+      };
 
-      const getNumValue = (el) => +[...el.classList].find(c => c.startsWith("n_")).split("_")[1];
-      
-      const getWidthValue = (el) => +[...el.classList].find(c => c.startsWith("w_")).split("_")[1];
+      const getNumValue = (el) =>
+        +[...el.classList].find((c) => c.startsWith("n_")).split("_")[1];
+
+      const getWidthValue = (el) =>
+        +[...el.classList].find((c) => c.startsWith("w_")).split("_")[1];
 
       const combine = (dragging, stacking) => {
         maxId++;
@@ -435,21 +520,21 @@
         console.log("combine end", dragging, stacking, newClass);
         main.removeChild(stacking);
         stacking = null;
-      }
+      };
 
       const mouseMove = (e) => {
         if (!dragging) return;
         const bData = blockData[dragging.id];
         const cursorX = e.clientX || e.touches[0].clientX;
         const cursorY = e.clientY || e.touches[0].clientY;
-        
+
         // Calculate the new position of the mouse
         bData.currentX = cursorX - bData.initialX;
         bData.currentY = cursorY - bData.initialY;
         // Update the offset with the new position
         bData.xOffset = bData.currentX;
         bData.yOffset = bData.currentY;
-        
+
         // Move the block to the new position
         transform(dragging, bData);
 
@@ -458,42 +543,37 @@
         } else {
           mirror.classList.remove("mirror-shine");
 
-          for(const b of blocks){
+          for (const b of blocks) {
             if (b === dragging) continue;
             stacking = stackedUponBlock(dragging, b);
-            if (stacking)
-            {
+            if (stacking) {
               dragging.classList.add("shine");
               b.classList.add("shine");
               break;
             }
           }
 
-          if (!stacking)
-          {
+          if (!stacking) {
             dragging.classList.remove("shine");
-            for (let b of blocks)
-              b.classList.remove("shine");
+            for (let b of blocks) b.classList.remove("shine");
           }
         }
-      }
-      
+      };
+
       const mouseUp = () => {
         if (!dragging) return;
         // Save the final position
         dragging.initialX = dragging.currentX;
         dragging.initialY = dragging.currentY;
         // Clone if in mirror
-        if (isInside(mirror, dragging))
-          clone(mirror);
+        if (isInside(mirror, dragging)) clone(mirror);
         // Combine if stacking
-        if (stacking)
-          combine(dragging, stacking);
+        if (stacking) combine(dragging, stacking);
         // Stop drag
         dragging = null;
         stacking = null;
-      }
-      
+      };
+
       // Set up the app
       // Variables to track dragging and position data
       let dragging = null;
@@ -504,23 +584,34 @@
       const hidden = document.getElementById("1");
       const mirror = document.getElementsByClassName("mirror")[0];
       const blocks = document.getElementsByClassName("draggable");
-      const help = document.getElementsByClassName("help-text")[0];
-      for (const b of blocks)
-      {
+      const helpText = document.getElementsByClassName("help-text")[0];
+      for (const b of blocks) {
         if (b.id > maxId) maxId = b.id;
         initBlock(b);
       }
 
       // Listen for mouse move/up across the entire document
-      document.addEventListener("mousemove", function (e) { e.preventDefault(); mouseMove(e) });
-      document.addEventListener("touchmove", 
-        function (e) { e.preventDefault(); mouseMove(e) },
-        {passive: false}
+      document.addEventListener("mousemove", function (e) {
+        e.preventDefault();
+        mouseMove(e);
+      });
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          e.preventDefault();
+          mouseMove(e);
+        },
+        { passive: false }
       );
-      document.addEventListener("mouseup", function (e) { mouseUp() });
-      document.addEventListener("touchend", function (e) { mouseUp() });
-      document.addEventListener("touchcancel", function (e) { mouseUp() });
-      
+      document.addEventListener("mouseup", function (e) {
+        mouseUp();
+      });
+      document.addEventListener("touchend", function (e) {
+        mouseUp();
+      });
+      document.addEventListener("touchcancel", function (e) {
+        mouseUp();
+      });
     </script>
   </body>
 </html>
