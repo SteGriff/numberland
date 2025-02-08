@@ -239,13 +239,14 @@
         cursor: pointer;
       }
       .help {
-        visibility: hidden;
         border-radius: 100%;
         background-color: #fff;
         cursor: pointer;
         text-align: center;
-        font-size: 3rem;
-        line-height: 4rem;
+        height: 2rem;
+        width: 2rem;
+        line-height: 2rem;
+        font-weight: bold;
       }
       .w_2 {
         grid-template-columns: 4.2rem 4.2rem;
@@ -266,7 +267,7 @@
   <body oncontextmenu="return false;">
     <div id="main">
       <div class="sun abs block top right" onclick="makeOne()"></div>
-      <div class="help abs block bottom right" onclick="help()">?</div>
+      <div class="help abs bottom right" onclick="help()">?</div>
       <div class="draggable mirror abs bottom center" id="0"></div>
       <div class="draggable container abs n_1 w_1 hidden" id="1">
         <div class="block entity"></div>
@@ -275,17 +276,17 @@
         <div class="block entity"></div>
       </div>
     </div>
-    <div class="hidden abs top right bottom left">
+    <div class="help-text hidden abs top right left">
       <h1>Numberland</h1>
       <p>Instructions:</p>
       <ul>
-      <li>Drag blocks into the mirror to make a clone</li>
-      <li>They need to be "standing tall" to fit in the mirror</li>
-      <li>Drag one block on top of another to stack them (add)</li>
-      <li>It's not currently possible to "split" blocks again (subtract)</li>
+      <li>Drag blocks into the mirror to make a clone.</li>
+      <li>They need to be "standing tall" to fit in the mirror.</li>
+      <li>Drag one block on top of another to stack them (add).</li>
+      <li>It's not currently possible to "split" blocks again (subtract).</li>
       <li>If you run out of "Ones" you can click the sun to get another one.</li>
-      <li>Right-click a block to change its width, up to a max of five (not available on touch screens)</li>
-      <li>When combined, blocks get the greater width of either block that was combined</li>
+      <li>Right-click a block to change its width, up to a max of five (not available on touch screen).</li>
+      <li>When combined, blocks get the greater width of either block that was combined.</li>
       <li>Have fun!</li>
       </ul>
     </div>
@@ -503,6 +504,7 @@
       const hidden = document.getElementById("1");
       const mirror = document.getElementsByClassName("mirror")[0];
       const blocks = document.getElementsByClassName("draggable");
+      const help = document.getElementsByClassName("help-text")[0];
       for (const b of blocks)
       {
         if (b.id > maxId) maxId = b.id;
